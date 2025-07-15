@@ -1,9 +1,12 @@
 import os
 import shutil
 from flask import Flask, render_template, redirect, url_for, request
-from pyexpat.errors import messages
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.getenv('FLASK_KEY')
 
 FILE_TYPES = {
     "Documents": ['.pdf', '.docx', '.txt', '.xls', '.xlsx', '.pptx'],
